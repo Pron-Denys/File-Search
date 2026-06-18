@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="File Search/File Search.csproj" />
+  <Project Path="FileSearchOptions/FileSearchOptions.csproj" Id="c31c9ba5-fadf-4bd6-b252-068de9ed32fa" />
+</Solution>
