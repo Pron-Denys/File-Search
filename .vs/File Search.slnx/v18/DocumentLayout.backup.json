@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\File Search\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|c:\\users\\user\\source\\repos\\file search\\file search\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|solutionrelative:file search\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C31C9BA5-FADF-4BD6-B252-068DE9ED32FA}|FileSearchOptions\\FileSearchOptions.csproj|c:\\users\\user\\source\\repos\\file search\\filesearchoptions\\filesearchoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C31C9BA5-FADF-4BD6-B252-068DE9ED32FA}|FileSearchOptions\\FileSearchOptions.csproj|solutionrelative:filesearchoptions\\filesearchoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|C:\\Users\\User\\source\\repos\\File Search\\file search\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|solutionrelative:file search\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|c:\\users\\user\\source\\repos\\file search\\file search\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|solutionrelative:file search\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|c:\\users\\user\\source\\repos\\file search\\file search\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|solutionrelative:file search\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C31C9BA5-FADF-4BD6-B252-068DE9ED32FA}|FileSearchOptions\\FileSearchOptions.csproj|c:\\users\\user\\source\\repos\\file search\\filesearchoptions\\filesearchoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C31C9BA5-FADF-4BD6-B252-068DE9ED32FA}|FileSearchOptions\\FileSearchOptions.csproj|solutionrelative:filesearchoptions\\filesearchoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|C:\\Users\\User\\source\\repos\\File Search\\file search\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{22D37E7A-BD4F-8239-C873-E756AA8B0062}|File Search\\File Search.csproj|solutionrelative:file search\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,40 +34,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\File Search\\File Search\\Form1.cs",
               "RelativeDocumentMoniker": "File Search\\Form1.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\File Search\\File Search\\Form1.cs [Design]",
               "RelativeToolTip": "File Search\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-13T11:20:55.01Z",
+              "WhenOpened": "2026-06-20T09:37:09.554Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\File Search\\File Search\\Form1.cs",
-              "RelativeDocumentMoniker": "File Search\\Form1.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\File Search\\File Search\\Form1.cs",
-              "RelativeToolTip": "File Search\\Form1.cs",
-              "ViewState": "AgIAAJgAAAAAAAAAAAAswKAAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T13:28:16.465Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FileSearchOptions.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\File Search\\FileSearchOptions\\FileSearchOptions.cs",
-              "RelativeDocumentMoniker": "FileSearchOptions\\FileSearchOptions.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\File Search\\FileSearchOptions\\FileSearchOptions.cs",
-              "RelativeToolTip": "FileSearchOptions\\FileSearchOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T17:12:25.774Z"
             },
             {
               "$type": "Document",
@@ -77,9 +52,34 @@
               "RelativeDocumentMoniker": "File Search\\Form1.Designer.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\File Search\\File Search\\Form1.Designer.cs",
               "RelativeToolTip": "File Search\\Form1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T13:28:26.558Z",
+              "WhenOpened": "2026-06-19T14:33:27.464Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\File Search\\File Search\\Form1.cs",
+              "RelativeDocumentMoniker": "File Search\\Form1.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\File Search\\File Search\\Form1.cs",
+              "RelativeToolTip": "File Search\\Form1.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAgwBYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T13:28:16.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileSearchOptions.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\File Search\\FileSearchOptions\\FileSearchOptions.cs",
+              "RelativeDocumentMoniker": "FileSearchOptions\\FileSearchOptions.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\File Search\\FileSearchOptions\\FileSearchOptions.cs",
+              "RelativeToolTip": "FileSearchOptions\\FileSearchOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T17:12:25.774Z",
               "EditorCaption": ""
             }
           ]

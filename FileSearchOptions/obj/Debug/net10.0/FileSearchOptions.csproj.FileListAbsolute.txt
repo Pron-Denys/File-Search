@@ -9,3 +9,4 @@ C:\Users\User\source\repos\File Search\FileSearchOptions\obj\Debug\net10.0\FileS
 C:\Users\User\source\repos\File Search\FileSearchOptions\obj\Debug\net10.0\refint\FileSearchOptions.dll
 C:\Users\User\source\repos\File Search\FileSearchOptions\obj\Debug\net10.0\FileSearchOptions.pdb
 C:\Users\User\source\repos\File Search\FileSearchOptions\obj\Debug\net10.0\ref\FileSearchOptions.dll
+C:\Users\User\source\repos\File Search\FileSearchOptions\obj\Debug\net10.0\FileSearchOptions.sourcelink.json

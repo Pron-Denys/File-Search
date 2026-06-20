@@ -6,5 +6,6 @@
         public Regex? regText;
         public DirectoryInfo dirInfo;
         public Regex regMask;
+        public CancellationToken canTok;
     }
 }

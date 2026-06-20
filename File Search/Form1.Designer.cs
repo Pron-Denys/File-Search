@@ -15,6 +15,10 @@
         {
             if (disposing && (components != null))
             {
+                if (tsk_2 != null)
+                    tsk_2.Dispose();               
+                if (tsk_3 != null)
+                    tsk_3.Dispose();
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -28,7 +32,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             textBox1 = new TextBox();
             label1 = new Label();
             textBox2 = new TextBox();
@@ -41,7 +44,6 @@
             label4 = new Label();
             checkBox1 = new CheckBox();
             listBox1 = new ListBox();
-            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // textBox1
@@ -152,10 +154,6 @@
             listBox1.Size = new Size(1053, 284);
             listBox1.TabIndex = 12;
             // 
-            // timer1
-            // 
-            timer1.Tick += Tick_CheckIsAlive;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -176,7 +174,6 @@
             MaximizeBox = false;
             Name = "Form1";
             Text = "Пошук файлів";
-            FormClosed += Form1_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -195,6 +192,5 @@
         private Label label4;
         private CheckBox checkBox1;
         private ListBox listBox1;
-        private System.Windows.Forms.Timer timer1;
     }
 }

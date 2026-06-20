@@ -4,11 +4,12 @@ namespace File_Search
     using FileSearchOptions;
     public partial class Form1 : Form
     {
-        ManualResetEvent[] manual_event = { new(true), new(false), new(false) };
+        ManualResetEvent[] manual_event = { new(true), new(false) };
         SynchronizationContext? uiContext;
-        Thread? t;
         int Counter_Files;
         bool Check;
+        Task? tsk_2;
+        Task? tsk_3;
         public Form1()
         {
             InitializeComponent();
@@ -18,27 +19,30 @@ namespace File_Search
             Check = false;
             button2.Enabled = false;
             button3.Enabled = false;
-            timer1.Start();
+            tsk_2 = null;
+            tsk_3 = null;
             comboBox1.DataSource = LogicalDrives;
         }
         public void ResultCountFiles(object value)
         {
+            StreamReader? reader = null;
             try
             {
                 if (value is FileSearchOptions)
                 {
                     int CountFiles = 0;
-                    StreamReader? reader = null;
                     MatchCollection mc;
                     FileSearchOptions file_search_options = (FileSearchOptions)value;
+                    CancellationToken canTok = (CancellationToken)file_search_options.canTok;
+                    canTok.ThrowIfCancellationRequested();
                     FileInfo[] files = file_search_options.dirInfo.GetFiles();
                     foreach (FileInfo file in files)
                     {
                         if (file_search_options.regMask.IsMatch(file.Name))
                         {
                             manual_event[0].WaitOne();
-                            if (manual_event[1].WaitOne(0))
-                                break;
+                            if (canTok.IsCancellationRequested)
+                                canTok.ThrowIfCancellationRequested();
                             ++CountFiles;
                             ++Counter_Files;
                             SendOrPostCallback result = (parametr) => label4.Text = $"Результати пошуку: кількість знайдених файлів: {CountFiles}";
@@ -52,20 +56,22 @@ namespace File_Search
                                 mc = file_search_options.regText.Matches(read_to_end);
                                 foreach (Match m in mc)
                                 {
+                                    if (canTok.IsCancellationRequested)
+                                        canTok.ThrowIfCancellationRequested();
                                     SendOrPostCallback position_word = (parametr) => label4.Text = $"Результати пошуку: {m.Index}. Кількість знайдених файлів: {CountFiles}";
                                     uiContext?.Send(position_word, null);
                                 }
                             }
                         }
                     }
-                    if (manual_event[2].WaitOne(0))
+                    if (manual_event[1].WaitOne(0))
                     {
                         DirectoryInfo[] di = file_search_options.dirInfo.GetDirectories();
                         foreach (DirectoryInfo d in di)
                         {
-                            if (manual_event[1].WaitOne(0))
-                                break;
-                            ResultCountFiles(new FileSearchOptions { regText = file_search_options.regText, dirInfo = d, regMask = file_search_options.regMask });
+                            if (canTok.IsCancellationRequested)
+                                canTok.ThrowIfCancellationRequested();
+                            ResultCountFiles(new FileSearchOptions { regText = file_search_options.regText, dirInfo = d, regMask = file_search_options.regMask, canTok = file_search_options.canTok });
                         }
                     }
                     SendOrPostCallback return_result = (parametr) =>
@@ -77,7 +83,11 @@ namespace File_Search
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                ex.Message.ToString();
+            }
+            finally
+            {
+                reader?.Close();
             }
         }
 
@@ -85,7 +95,6 @@ namespace File_Search
         {
             if (textBox1.Text != "")
             {
-                manual_event[1].Reset();
                 manual_event[0].Set();
                 listBox1.Items.Clear();
                 Counter_Files = 0;
@@ -109,9 +118,60 @@ namespace File_Search
                     mask = mask.Replace("*", ".*");
                     mask = "^" + mask + "$";
                     Regex maskReg = new(mask, RegexOptions.IgnoreCase);
-                    FileSearchOptions value = new FileSearchOptions { regText = textReg, dirInfo = dirInfo, regMask = maskReg };
-                    t = new(ResultCountFiles!);
-                    t.Start(value);
+                    CancellationTokenSource tokenSource = new CancellationTokenSource();
+                    FileSearchOptions value = new FileSearchOptions { regText = textReg, dirInfo = dirInfo, regMask = maskReg, canTok = tokenSource.Token };
+                    Task tsk_1 = Task.Factory.StartNew(ResultCountFiles!, value, tokenSource.Token);
+                    tsk_2 = new(() =>
+                    {
+                        try
+                        {
+                            tokenSource.Cancel();
+                            tsk_1.Wait();
+                        }
+                        catch (AggregateException)
+                        {
+                            if (tsk_1.IsCanceled)
+                            {
+                                SendOrPostCallback message = (parametr) =>
+                                {
+                                    MessageBox.Show("Пошук зупинено!");
+                                };
+                                uiContext?.Send(message, null);
+                            }
+                        }
+                        finally
+                        {
+                            tsk_1.Dispose();
+                            tokenSource.Dispose();
+                        }
+                    });
+                    tsk_3 = Task.Factory.StartNew(() =>
+                    {
+                        try
+                        {
+                            tsk_1.Wait();
+                            SendOrPostCallback stop = (parametr) =>
+                            {
+                                button1.Enabled = true;
+                                button2.Enabled = false;
+                                button3.Enabled = false;
+                            };
+                            uiContext?.Send(stop, null);
+                        }
+                        catch(Exception ex)
+                        {
+                            SendOrPostCallback message = (parametr) =>
+                            {
+                                MessageBox.Show(ex.Message);
+                            };
+                            uiContext?.Send(message, null);
+                        }
+                        finally
+                        {
+                            tsk_1.Dispose();
+                            tokenSource.Dispose();
+                        }
+                    });
                 }
             }
             else
@@ -122,15 +182,15 @@ namespace File_Search
         {
             if (checkBox1.Checked)
             {
-                manual_event[2].Set();
+                manual_event[1].Set();
             }
             else
-                manual_event[2].Reset();
+                manual_event[1].Reset();
         }
 
         private void Click_Stop(object sender, EventArgs e)
         {
-            manual_event[1].Set();
+            tsk_2?.Start();
             button1.Enabled = true;
             button2.Enabled = false;
             button3.Enabled = false;
@@ -152,21 +212,6 @@ namespace File_Search
                 button3.Text = "Призупинити";
                 Check = false;
             }
-        }
-
-        private void Tick_CheckIsAlive(object sender, EventArgs e)
-        {
-            if (t?.ThreadState == ThreadState.Stopped)
-            {
-                button1.Enabled = true;
-                button2.Enabled = false;
-                button3.Enabled = false;
-            }
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            timer1.Stop();
         }
     }
 }
